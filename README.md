@@ -26,4 +26,4 @@
 - UseEffect tools
 - Email and password authentication
 
-- Link to Project https://bdangel1.github.io/react-around-auth/
+- Link to Project [https://bdangel1.github.io/react-around-auth/](https://github.com/bdangel1/react-around-auth)https://github.com/bdangel1/react-around-auth
