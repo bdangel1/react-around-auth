@@ -20,7 +20,7 @@ const Login = ({ handleLogin, isLoading }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = userLogin;
-    handleLogin({ email, password });
+    handleLogin(email, password);
   };
 
   return (
@@ -51,7 +51,7 @@ const Login = ({ handleLogin, isLoading }) => {
             </button>
             <p className="auth-form__footer-text">
               Not a member yet?{" "}
-              <Link to="/signup" className="auth-form__footer-link">
+              <Link to="/signUp" className="auth-form__footer-link">
                 Sign up here!
               </Link>
             </p>

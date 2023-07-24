@@ -11,12 +11,12 @@ import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import DeletePopup from "./DeletePopup.js";
 import Register from "./Register.js";
-import { signUp, signIn, checkToken } from "../utils/auth.js";
+import { signUp, signIn, checkToken, toggleAuthMode } from "../utils/auth.js";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login.js";
-// import * as auth from "../utils/auth";
 import InfoTooltip from "./InfoTooltip.js";
+
 function App() {
   // set state
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -78,11 +78,11 @@ function App() {
         .then((res) => {
           setLoggedIn(true);
           setUserEmail(res.data.email);
-          history.push("/");
+          history.push("/react-around-auth");
         })
         .catch((err) => {
           console.log(err);
-          history.push("/signin");
+          history.push("/signIn");
           setLoggedIn(false);
         })
         .finally(() => {
@@ -154,25 +154,27 @@ function App() {
       .then((res) => {
         if (res.data._id) {
           setInfoTooltipType("successful");
-          history.push("/signin");
+          history.push("/signIn");
         } else {
           setInfoTooltipType("unsuccessful");
-          history.push("/signup");
+          history.push("/signUp");
         }
       })
       .catch((err) => console.log(err))
-      .finally(() => setInfoTooltipType(true));
-    setIsLoading(false);
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleLogin = (email, password) => {
+    toggleAuthMode();
     signIn(email, password)
       .then((res) => {
         if (res.token) {
           setLoggedIn(true);
           localStorage.setItem("token", res.token);
           setUserEmail(email);
-          history.push("/around-react");
+          history.push("/react-around-auth");
         } else {
           setInfoTooltipType(false);
           setIsInfoTooltipOpen(true);
@@ -191,7 +193,7 @@ function App() {
   function handleSignout() {
     setLoggedIn(false);
     localStorage.removeItem("jwt");
-    history.push("/signin");
+    history.push("/signIn");
   }
 
   // functions
@@ -244,16 +246,19 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <CurrentUserContext.Provider value={currentUser}>
+        <CurrentUserContext.Provider
+          value={{ currentUser: currentUser, userEmail: userEmail }}
+        >
           <Header
             loggedIn={loggedIn}
             setLoggedIn={setLoggedIn}
             userEmail={userEmail}
             handleSignout={handleSignout}
+            toggleAuthMode={toggleAuthMode}
           />
           <Switch>
             <ProtectedRoute
-              path="/around-react"
+              path="/react-around-auth"
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}
               isCheckingToken={isCheckingToken}
@@ -268,17 +273,17 @@ function App() {
                 cards={cards}
               />
             </ProtectedRoute>
-            <Route path="/signup">
+            <Route path="/signUp">
               <Register handleRegister={handleRegister} />
             </Route>
-            <Route path="/signin">
+            <Route path="/signIn">
               <Login handleLogin={handleLogin} />
             </Route>
             <Route>
               {loggedIn ? (
                 <Redirect to="/react-around-auth" />
               ) : (
-                <Redirect to="/signin" />
+                <Redirect to="/signIn" />
               )}
             </Route>
           </Switch>

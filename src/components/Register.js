@@ -21,7 +21,7 @@ const Register = ({ handleRegister }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = userLogin;
-    handleRegister({ email, password });
+    handleRegister(email, password);
   };
   return (
     <div className="auth-form">
@@ -51,7 +51,7 @@ const Register = ({ handleRegister }) => {
             </button>
             <p className="auth-form__footer-text">
               Already a member?{" "}
-              <Link to="/signin" className="auth-form__footer-link">
+              <Link to="/signIn" className="auth-form__footer-link">
                 Log in here!
               </Link>
             </p>

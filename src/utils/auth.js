@@ -6,7 +6,7 @@ const customFetch = (url, headers) => {
 };
 
 export const signUp = (email, password) => {
-  return customFetch(`${baseUrl}/signup`, {
+  return customFetch(`${baseUrl}/signUp`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -17,7 +17,7 @@ export const signUp = (email, password) => {
 };
 
 export const signIn = (email, password) => {
-  return customFetch(`${baseUrl}/signin`, {
+  return customFetch(`${baseUrl}/`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -35,4 +35,20 @@ export const checkToken = (token) => {
       Authorization: `Bearer ${token}`,
     },
   });
+};
+
+export const toggleAuthMode = (mode) => {
+  if (mode === "signUp") {
+    return {
+      buttonText: "Log In",
+      toggleText: "Already have an account? Sign up",
+      toggleMode: "signIn",
+    };
+  } else {
+    return {
+      buttonText: "Sign Up",
+      toggleText: "Don't have an account? Log in",
+      toggleMode: "signUp",
+    };
+  }
 };
