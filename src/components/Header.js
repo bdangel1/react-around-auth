@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Header({ loggedIn, email, handleSignout }) {
   const location = useLocation();
-  const isLogin = location.pathname === "/";
+  const isLogin = location.pathname === "/signIn";
   const isRegister = location.pathname === "/signUp";
   return (
     <header className="header">

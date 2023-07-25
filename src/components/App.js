@@ -11,7 +11,7 @@ import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import DeletePopup from "./DeletePopup.js";
 import Register from "./Register.js";
-import { signUp, signIn, checkToken, toggleAuthMode } from "../utils/auth.js";
+import { signUp, signIn, checkToken } from "../utils/auth.js";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login.js";
@@ -73,7 +73,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (token) {
+    if (localStorage.getItem("token")) {
       checkToken(token)
         .then((res) => {
           setLoggedIn(true);
@@ -167,7 +167,6 @@ function App() {
   };
 
   const handleLogin = (email, password) => {
-    toggleAuthMode();
     signIn(email, password)
       .then((res) => {
         if (res.token) {
@@ -192,7 +191,7 @@ function App() {
   };
   function handleSignout() {
     setLoggedIn(false);
-    localStorage.removeItem("jwt");
+    localStorage.removeItem("token");
     history.push("/signIn");
   }
 
@@ -254,7 +253,6 @@ function App() {
             setLoggedIn={setLoggedIn}
             userEmail={userEmail}
             handleSignout={handleSignout}
-            toggleAuthMode={toggleAuthMode}
           />
           <Switch>
             <ProtectedRoute

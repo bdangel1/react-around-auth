@@ -32,23 +32,8 @@ export const checkToken = (token) => {
     method: "GET",
     headers: {
       Accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   });
-};
-
-export const toggleAuthMode = (mode) => {
-  if (mode === "signUp") {
-    return {
-      buttonText: "Log In",
-      toggleText: "Already have an account? Sign up",
-      toggleMode: "signIn",
-    };
-  } else {
-    return {
-      buttonText: "Sign Up",
-      toggleText: "Don't have an account? Log in",
-      toggleMode: "signUp",
-    };
-  }
 };

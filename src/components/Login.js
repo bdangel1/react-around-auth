@@ -20,6 +20,7 @@ const Login = ({ handleLogin, isLoading }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = userLogin;
+
     handleLogin(email, password);
   };
 
