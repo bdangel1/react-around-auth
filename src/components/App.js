@@ -160,7 +160,10 @@ function App() {
           history.push("/signUp");
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err);
+        setInfoTooltipType("error");
+      })
       .finally(() => {
         setIsLoading(false);
       });

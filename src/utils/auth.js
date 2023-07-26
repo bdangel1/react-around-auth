@@ -17,7 +17,7 @@ export const signUp = (email, password) => {
 };
 
 export const signIn = (email, password) => {
-  return customFetch(`${baseUrl}/`, {
+  return customFetch(`${baseUrl}/signIn`, {
     method: "POST",
     headers: {
       Accept: "application/json",
