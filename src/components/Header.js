@@ -4,8 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Header({ loggedIn, email, handleSignout }) {
   const location = useLocation();
-  const isLogin = location.pathname === "/signIn";
-  const isRegister = location.pathname === "/signUp";
+  const login = location.pathname === "/signIn";
+  const register = location.pathname === "/signUp";
   return (
     <header className="header">
       <div className="header__container">
@@ -14,17 +14,17 @@ export default function Header({ loggedIn, email, handleSignout }) {
         <nav className="header_navbar">
           <ul
             className={`header__links ${
-              isLogin || isRegister ? "header__links_signUp-login-page" : ""
+              login || register ? "header__links_signUp-login-page" : ""
             }`}
           >
-            {isLogin && (
+            {login && (
               <li className="header__link-item">
                 <Link to="/signUp" className="header__link">
                   Sign up
                 </Link>
               </li>
             )}
-            {isRegister && (
+            {register && (
               <li className="header__link-item">
                 <Link to="/signIn" className="header__link">
                   Log in

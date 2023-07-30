@@ -5,7 +5,7 @@ import Footer from "./Footer.js";
 import "../index.css";
 import EditProfilePopup from "./EditProfilePopup.js";
 import AddPlacePopup from "./AddPlacePopup.js";
-import EditAvatarPopup from "./EditAvataPopupr.js";
+import EditAvatarPopup from "./EditAvatarPopup.js";
 import ImagePopup from "./ImagePopup.js";
 import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
@@ -162,9 +162,9 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setInfoTooltipType("error");
       })
       .finally(() => {
+        setIsInfoTooltipOpen(true);
         setIsLoading(false);
       });
   };
@@ -323,7 +323,6 @@ function App() {
             isOpen={isInfoTooltipOpen}
             onClose={closeAllPopups}
             type={infoTooltipType}
-            isTooltipOpen={isInfoTooltipOpen}
             name="tooltip"
           />
         </CurrentUserContext.Provider>
