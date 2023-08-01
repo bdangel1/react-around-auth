@@ -2,7 +2,7 @@ import React from "react";
 import logoUs from "../images/Vector.svg";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Header({ loggedIn, email, handleSignout }) {
+export default function Header({ loggedIn, userEmail, handleSignout }) {
   const location = useLocation();
   const login = location.pathname === "/signIn";
   const register = location.pathname === "/signUp";
@@ -42,7 +42,7 @@ export default function Header({ loggedIn, email, handleSignout }) {
                 </Link>
               </li>
             )}
-            {loggedIn && <li className="header__link-item">{email}</li>}
+            {loggedIn && <li className="header__link-item">{userEmail}</li>}
           </ul>
         </nav>
       </div>

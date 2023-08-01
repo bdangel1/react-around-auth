@@ -120,11 +120,11 @@ function App() {
     setIsImagePreviewOpen(true);
     setSelectedCard(card);
   };
-  const handleUpdateUser = ({ name, about }) => {
+  const handleUpdateUser = (userData) => {
     setIsLoading(true);
 
     api
-      .editProfile({ name, about })
+      .editProfile(userData)
       .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
@@ -162,6 +162,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        setInfoTooltipType("error");
       })
       .finally(() => {
         setIsInfoTooltipOpen(true);
