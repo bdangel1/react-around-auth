@@ -8,12 +8,13 @@
 }
 .card__image {
   height: 282px;
+
   background-repeat: no-repeat;
   background-position: center;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   cursor: pointer;
-  max-width: 100%;
+  width: 100%;
 }
 .card__trash-button {
   background-image: url(../images/Trash.svg);

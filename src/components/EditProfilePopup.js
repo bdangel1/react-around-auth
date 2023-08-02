@@ -9,7 +9,7 @@ export default function EditProfilePopup({
   isLoading,
 }) {
   // const
-  const currentUser = React.useContext(CurrentUserContext);
+  const { currentUser } = React.useContext(CurrentUserContext);
   const [name, setName] = useState(" ");
   const [about, setDescription] = useState(" ");
 

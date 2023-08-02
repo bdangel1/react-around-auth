@@ -122,7 +122,6 @@ function App() {
   };
   const handleUpdateUser = (userData) => {
     setIsLoading(true);
-
     api
       .editProfile(userData)
       .then((res) => {
@@ -163,9 +162,9 @@ function App() {
       .catch((err) => {
         console.log(err);
         setInfoTooltipType("error");
+        setIsInfoTooltipOpen(true);
       })
       .finally(() => {
-        setIsInfoTooltipOpen(true);
         setIsLoading(false);
       });
   };
