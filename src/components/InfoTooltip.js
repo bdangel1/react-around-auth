@@ -3,7 +3,7 @@ import successfulIcon from "../images/Union.svg";
 import unSuccessfulIcon from "../images/Unsuccessful.svg";
 import Popup from "./Popup";
 
-const InfoTooltip = ({ isOpen, onClose, type }) => {
+const InfoToolTip = ({ isOpen, onClose, type }) => {
   useEffect(() => {
     if (isOpen) {
       const timer = setTimeout(() => {
@@ -51,4 +51,4 @@ const InfoTooltip = ({ isOpen, onClose, type }) => {
   );
 };
 
-export default InfoTooltip;
+export default InfoToolTip;

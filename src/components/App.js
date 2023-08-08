@@ -15,7 +15,7 @@ import { signUp, signIn, checkToken } from "../utils/auth.js";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login.js";
-import InfoTooltip from "./InfoTooltip.js";
+import InfoToolTip from "./InfoToolTip.js";
 
 function App() {
   // set state
@@ -31,10 +31,10 @@ function App() {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
-  const [infoTooltipType, setInfoTooltipType] = useState("");
+  const [infoToolTipType, setInfoToolTipType] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState([]);
-  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
   const [isCheckingToken, setIsCheckingToken] = useState(true);
 
   // consts
@@ -113,7 +113,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsImagePreviewOpen(false);
     setIsDeletePopupOpen(false);
-    setIsInfoTooltipOpen(false);
+    setIsInfoToolTipOpen(false);
   };
 
   const handleCardClick = (card) => {
@@ -152,17 +152,17 @@ function App() {
     signUp(email, password)
       .then((res) => {
         if (res.data._id) {
-          setInfoTooltipType("successful");
+          setInfoToolTipType("successful");
           history.push("/signIn");
         } else {
-          setInfoTooltipType("unsuccessful");
+          setInfoToolTipType("unsuccessful");
           history.push("/signUp");
         }
       })
       .catch((err) => {
         console.log(err);
-        setInfoTooltipType("error");
-        setIsInfoTooltipOpen(true);
+        setInfoToolTipType("error");
+        setIsInfoToolTipOpen(true);
       })
       .finally(() => {
         setIsLoading(false);
@@ -178,14 +178,14 @@ function App() {
           setUserEmail(email);
           history.push("/react-around-auth");
         } else {
-          setInfoTooltipType(false);
-          setIsInfoTooltipOpen(true);
+          setInfoToolTipType(false);
+          setIsInfoToolTipOpen(true);
         }
       })
       .catch((err) => {
         console.log(err);
-        setInfoTooltipType("unsuccessful");
-        setIsInfoTooltipOpen(true);
+        setInfoToolTipType("unsuccessful");
+        setIsInfoToolTipOpen(true);
       })
       .finally(() => {
         setIsCheckingToken(false);
@@ -319,10 +319,10 @@ function App() {
             isOpen={isImagePreviewOpen}
             onClose={closeAllPopups}
           />
-          <InfoTooltip
-            isOpen={isInfoTooltipOpen}
+          <InfoToolTip
+            isOpen={isInfoToolTipOpen}
             onClose={closeAllPopups}
-            type={infoTooltipType}
+            type={infoToolTipType}
             name="tooltip"
           />
         </CurrentUserContext.Provider>
