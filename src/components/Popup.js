@@ -3,7 +3,7 @@ import React from "react";
 const Popup = ({ isOpen, onClose, name, title, children }) => {
   return (
     <div className={`popup ${name} ${isOpen ? "popup_opened" : ""}`}>
-      <div className="popup__container">
+      <div className="popup__content">
         <button
           className="popup__close-button"
           type="button"
