@@ -161,10 +161,10 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setInfoToolTipType("error");
-        setIsInfoToolTipOpen(true);
+        setInfoToolTipType(err);
       })
       .finally(() => {
+        setIsInfoToolTipOpen(true);
         setIsLoading(false);
       });
   };
