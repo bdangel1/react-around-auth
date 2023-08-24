@@ -161,7 +161,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setInfoToolTipType(err);
+        setInfoToolTipType("error");
       })
       .finally(() => {
         setIsInfoToolTipOpen(true);
@@ -184,7 +184,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setInfoToolTipType("unsuccessful");
+        setInfoToolTipType("error");
         setIsInfoToolTipOpen(true);
       })
       .finally(() => {

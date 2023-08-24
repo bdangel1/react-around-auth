@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import successfulIcon from "../images/Union.svg";
-import unSuccessfulIcon from "../images/Unsuccessful.svg";
+import unsuccessfulIcon from "../images/Unsuccessful.svg";
 import Popup from "./Popup";
 
 const InfoToolTip = ({ isOpen, onClose, type }) => {
@@ -8,7 +8,7 @@ const InfoToolTip = ({ isOpen, onClose, type }) => {
     if (isOpen) {
       const timer = setTimeout(() => {
         onClose();
-      }, 3500);
+      }, 5000);
       return () => clearTimeout(timer);
     }
   }, [isOpen, onClose]);
@@ -31,9 +31,9 @@ const InfoToolTip = ({ isOpen, onClose, type }) => {
       case "successful":
         return successfulIcon;
       case "unsuccessful":
-        return unSuccessfulIcon;
+        return unsuccessfulIcon;
       case "error":
-        return unSuccessfulIcon;
+        return unsuccessfulIcon;
       default:
         return "";
     }

@@ -17,19 +17,17 @@ export default function Main({
     <main>
       <section className="profile">
         <div className="profile__avatar">
-          <div className="profile__change-hide">
-            <button
-              onClick={onEditAvatarClick}
-              type="button"
-              className="profile__change-button"
-            >
-              <img
-                className="profile__change-button-icon"
-                alt="vector of edit icon"
-                src={profileChange}
-              />
-            </button>
-          </div>
+          <button
+            onClick={onEditAvatarClick}
+            type="button"
+            className="profile__change-button"
+          >
+            <img
+              className="profile__change-button-icon"
+              alt="vector of edit icon"
+              src={profileChange}
+            />
+          </button>
           <img
             onClick={onEditAvatarClick}
             src={currentUser.avatar}
