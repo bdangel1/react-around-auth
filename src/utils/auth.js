@@ -16,13 +16,6 @@ export const signUp = (email, password) => {
   });
 };
 
-// export const signUp = (email, password) => {
-//   return new Promise((resolve, reject) => {
-//     // Simulate an error during registration
-//     reject(new Error("Registration failed"));
-//   });
-// };
-
 export const signIn = (email, password) => {
   return customFetch(`${baseUrl}/signIn`, {
     method: "POST",

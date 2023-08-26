@@ -43,10 +43,10 @@ const InfoToolTip = ({ isOpen, onClose, type }) => {
     <Popup isOpen={isOpen} name="tooltip" onClose={onClose}>
       <img
         src={getIcon()}
-        className="tooltip__image"
+        className="  popup__tooltip__image"
         alt={`${type === "successful" ? "successful" : "unsuccessful"} attempt`}
       />
-      <h2 className="tooltip__text">{getMessage()}</h2>
+      <h2 className="popup__tooltip__text">{getMessage()}</h2>
     </Popup>
   );
 };
